@@ -1,0 +1,14 @@
+@(userForm: Form[User])
+
+@import helper._
+
+
+@helper.form(action = routes.TemplateApp.submit() ,'id -> "myForm") {
+ 
+  	@helper.inputText(userForm("email"), 'id -> "email", 'size -> 30)
+    
+    @helper.inputPassword(userForm("password"))
+    
+     <input type="submit" value="Create">
+    
+}

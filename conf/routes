@@ -28,9 +28,16 @@ POST    /body                       controllers.Application.bodyTest()
 
 GET    /chunk                       controllers.Application.chunkTest()
 
-GET    /socket                       controllers.Application.socketTest()
+GET    /socket                      controllers.Application.socketTest()
 
 # Tasks          
-GET     /tasks                  controllers.TaskApp.tasks()
-POST    /tasks                  controllers.TaskApp.newTask()
-POST    /tasks/:id/delete       controllers.TaskApp.deleteTask(id: Long)
+GET     /tasks                      controllers.TaskApp.tasks()
+POST    /tasks                      controllers.TaskApp.newTask()
+POST    /tasks/:id/delete           controllers.TaskApp.deleteTask(id: Long)
+
+#template
+GET     /template                   controllers.TemplateApp.templateTest()
+GET     /form                       controllers.TemplateApp.formTest()
+POST    /form                       controllers.TemplateApp.submit()
+
+GET    /api                         controllers.Application.webApiTest()

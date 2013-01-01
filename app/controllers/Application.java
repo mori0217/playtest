@@ -5,6 +5,9 @@ import org.apache.commons.lang.StringUtils;
 import play.libs.Comet;
 import play.libs.F.Callback;
 import play.libs.F.Callback0;
+import play.libs.F.Function;
+import play.libs.F.Promise;
+import play.libs.WS;
 import play.mvc.Controller;
 import play.mvc.Http.RequestBody;
 import play.mvc.Result;
@@ -18,7 +21,6 @@ public class Application extends Controller {
 			return ok(message);
 		}
 		return ok(views.html.index.render("Your new application is ready."));
-		// return ok("test");
 	}
 
 	public static Result redirectTest() {
@@ -129,5 +131,15 @@ public class Application extends Controller {
 			}
 
 		};
+	}
+
+	public static Result webApiTest() {
+		Promise<WS.Response> result = WS.url("http://localhost:9000/body")
+				.post("test");
+		return async(result.map(new Function<WS.Response, Result>() {
+			public Result apply(WS.Response response) {
+				return ok(response.getBody().toString());
+			}
+		}));
 	}
 }

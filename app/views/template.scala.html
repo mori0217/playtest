@@ -1,0 +1,28 @@
+@*************************************
+ * template page.                        *
+ *                                   *
+ *************************************@
+@(customer: Customer, orders: List[Order])
+ 
+<h1>Welcome @{var name = customer.getName() + customer.getAge(); name}!</h1>
+
+@display(order: Order) = {
+  @order.getTitle() ($@order.getPrice())
+}
+
+<ul> 
+@for(order <- orders) {
+  <li>@display(order)</li>
+} 
+</ul>
+
+@main(title = "Home") {
+    
+  <h1>Home page</h1>
+    
+}
+
+@notice("success") { color =>
+  Oops, something is <span style="color:@color">wrong</span>
+}
+
