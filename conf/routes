@@ -1,0 +1,36 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+GET     /redirect                   controllers.Application.redirectTest()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+GET     /hello/hello                controllers.Application.hello(name="デフォルト")
+GET     /hello                      controllers.Application.hello(name ?="デフォルトモリ")
+GET     /hello/:name                controllers.Application.hello(name)
+
+GET     /id/:id                     controllers.Application.id(id:Integer)
+
+GET     /notFound                   controllers.Application.notFoundTest()
+
+GET     /session                    controllers.Application.sessionTest()
+GET     /session/delete             controllers.Application.sessionDelete()
+GET     /session/:user              controllers.Application.sessionSet(user)
+
+GET     /flash                      controllers.Application.flashTest()
+
+POST    /body                       controllers.Application.bodyTest()
+
+GET    /chunk                       controllers.Application.chunkTest()
+
+GET    /socket                       controllers.Application.socketTest()
+
+# Tasks          
+GET     /tasks                  controllers.TaskApp.tasks()
+POST    /tasks                  controllers.TaskApp.newTask()
+POST    /tasks/:id/delete       controllers.TaskApp.deleteTask(id: Long)
